@@ -30,10 +30,54 @@ window.onload = function(){
     document.getElementById("prio").innerHTML = prio;
     document.getElementById("dienstleistung").innerHTML = dienstleistung;
    
-    console.log(name)
-    console.log(email)
 
 
+    document.getElementById("formid").onsubmit = function () {
+       // event.preventDefault();
+
+        const post = {
+            name : document.getElementById("name").innerHTML,
+            email : document.getElementById("email").innerHTML,
+            tel : document.getElementById("tel").innerHTML,
+            prio : document.getElementById("prio").innerHTML,
+            dienstleistung : document.getElementById("dienstleistung").innerHTML
+                    };
+                    
+
+        if(post.userId == "" || post.title == "" || post.body == ""){
+            alert("Eingabe ist ungültig");
+            return true;
+        }
+        
+        
+            fetch("http://localhost:5000/api/registration",{
+                method: "POST",
+                headers: {
+                    "Accept" : "application/json",
+                    "Content-Type": "application/json"
+                },
+                body:JSON.stringify({
+                    name:post.name,
+                    email: post.email,
+                    phone:post.tel,
+                    priority:post.prio,
+                    service:post.dienstleistung})
+
+            })
+        .then((response)=>response.json())
+            .then((json)=>finish(json))
+            .catch((error)=>{
+                alert("Leider gab es einen Fehler, bitte versuchen Sie es noch einmal");
+                return false;
+            }
+            );
+            
+            function finish(data)
+        {
+            return true;
+        }
+
+    }
 
 
 }

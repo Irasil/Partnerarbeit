@@ -6,7 +6,7 @@ window.onload = function(){
     const dienstleistung = document.getElementById('dienstleistung');
 
 
-    document.getElementById("btn-bestellen").onclick = function(e){
+    document.getElementById("btn-bestellen").onclick = function hallo(e){
            e.preventDefault;
         console.log(name.value)
         console.log(email.value)
