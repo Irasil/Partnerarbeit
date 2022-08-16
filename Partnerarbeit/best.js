@@ -10,20 +10,30 @@ window.onload = function(){
     const dienstleistung = urlParams.get("dienstleistung")
 
     
-    var result = "<h1>Bitte prüfen Sie Ihr Angaben</h1>";
+   /* var result = "<h1>Bitte prüfen Sie Ihre Angaben</h1>";
     result += "<br>";
-    result += `<strong>Name: &emsp;&emsp; &emsp;&emsp;&emsp;${name}`;
+    result += `Name:&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp<strong>${name}</strong>`;
     result += "<br>";
-    result += `<strong>E-Mail:&emsp;&emsp;&emsp;&emsp;&emsp;${email}`;
+    result += `E-Mail:&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>${email}</strong>`;
     result += "<br>";        
-    result += `<strong>Telnr.:&emsp;&emsp;&emsp;&emsp;&emsp;${tel}`;
+    result += `Telnr.:&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp&nbsp<strong>${tel}</strong>`;
     result += "<br>";           
-    result += `<strong>Priorität:&emsp;&emsp;&emsp;&emsp;${prio}`;  
+    result += `Priorität:&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;<strong>${prio}</strong>`;  
     result += "<br>";                   
-    result += `<strong>Dienstleistung:&emsp;${dienstleistung}`; 
+    result += `Dienstleistung:&emsp;&emsp;&emsp;&nbsp<strong>${dienstleistung}</strong>`; */
 
-    document.getElementById("best").innerHTML = result;
+
+
+    document.getElementById("name").innerHTML = name;
+    document.getElementById("email").innerHTML = email;
+    document.getElementById("tel").innerHTML = tel;
+    document.getElementById("prio").innerHTML = prio;
+    document.getElementById("dienstleistung").innerHTML = dienstleistung;
    
     console.log(name)
     console.log(email)
+
+
+
+
 }

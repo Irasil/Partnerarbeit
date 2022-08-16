@@ -13,7 +13,7 @@
   background: rgba(0, 0, 0, 0.5);
   color: #f1f1f1;
   width: 100%;
-  padding: 5px;
+  padding: 0px;
 }
 
 /* Style the button used to pause/play the video */
@@ -35,6 +35,10 @@
 .idbody {
   background-color:rgb(127, 214, 255) ;
   max-width: 100%;
+  padding-top: 70px;
+  
+  
+  top: 100px;
 }
 .navbar {
   position: fixed;
@@ -74,7 +78,7 @@
   
 }
 .content2{
-  margin-top: 5%;
+  margin-top: 0%;
 }
 
 .text{
@@ -102,4 +106,15 @@
 p{
   padding-left: 5%;
   padding-right: 5%;
+}
+.content3{
+  position: fixed;
+  
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 10px;
+  padding-left: 20%;
+  margin-top: 5%;
 }
