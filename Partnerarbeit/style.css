@@ -6,7 +6,7 @@
   
 }
 
-/* Add some content at the bottom of the video/page */
+
 .content {
   position: fixed;
   top: 0;
@@ -16,7 +16,7 @@
   padding: 0px;
 }
 
-/* Style the button used to pause/play the video */
+
 #myBtn {
   width: 200px;
   font-size: 18px;
@@ -25,6 +25,7 @@
   background: rgba(0, 0, 0, 0.0);;
   color: #fff;
   cursor: pointer;
+  
 }
 
 #myBtn:hover {
@@ -108,7 +109,7 @@ p{
   padding-right: 5%;
 }
 .content3{
-  position: fixed;
+  position:fixed;
   
   bottom: 0;
   background: rgba(0, 0, 0, 0.8);

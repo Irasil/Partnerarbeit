@@ -40,28 +40,20 @@ window.onload = function hey(){
 
     // Checkt ob Sonderzeichen vorhanden
     function containsNoSpecialChars(str) {
-        const specialChars = /[`1234567890!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+        const specialChars = /[`1234 567890!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
         return !specialChars.test(str);
     }  
     
-    // Berechnung des Abholdatums anhand von prio --------------------------------
-    prio.onchange = function () {
-        if (prio.value == "Tief") {
-            addDays(startdatum, 12)          
-        } else if (prio.value == "Standart") {
-            addDays(startdatum, 7)       
-        } else {
-            addDays(startdatum, 5)     
-        }
-    }
-
+    
+    
     // Klick auf Bestell-Button -----------------------------------------------------
     document.getElementById("btn-bestellen").onclick = function varInURL() {
         var feedbacks = [true,true,true,true]
         for (let i = 0; i < container.length; i = i + 1) {
             if (i < 2) {
-                feedbacks[i] = (containsNoSpecialChars(container[i]))
-                //&& container[i].indexOf(' ') == 0
+                if(container[i] == ""){
+                    feedbacks[i]  = false;}else
+                {feedbacks[i] = (containsNoSpecialChars(container[i]))}
             }
             if (i == 2) {
                 feedbacks[i] = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)
@@ -72,6 +64,14 @@ window.onload = function hey(){
             }
             
         }
+        if (prio.value == "Tief") {
+            addDays(startdatum, 12)          
+        } else if (prio.value == "Standart") {
+            addDays(startdatum, 7)       
+        } else {
+            addDays(startdatum, 5)     
+        }
+    // Berechnung des Abholdatums anhand von prio --------------------------------
 
        for (let i = 0; i < feedbacks.length; i = i + 1) {
             if (feedbacks[i] == false) {

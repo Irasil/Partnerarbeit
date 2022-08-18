@@ -31,31 +31,7 @@
                 window.location = `bestellen.html?dienstleistung=${renn}`
 
             default:
-                break;
-
-
-
-            
-
-
-
-
-
-
-
-
-            }
-        
-        
-        /*switch (knopf.value){
-            case "Bestellen":
-                console.log("Hallo");
-                break;
-            default:
-                console.log("leider nein")
-
-
-
-        }*/
-        
+                break; 
+            }    
+     
     }

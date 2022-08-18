@@ -15,7 +15,7 @@ window.onload = function(){
 
 
     document.getElementById("name").innerHTML = fullname;
-    document.getElementById("name").innerHTML = name;
+    
     document.getElementById("email").innerHTML = email;
     document.getElementById("tel").innerHTML = tel;
     document.getElementById("prio").innerHTML = prio;
@@ -33,7 +33,9 @@ window.onload = function(){
             email : document.getElementById("email").innerHTML,
             tel : document.getElementById("tel").innerHTML,
             prio : document.getElementById("prio").innerHTML,
-            dienstleistung : document.getElementById("dienstleistung").innerHTML
+            dienstleistung : document.getElementById("dienstleistung").innerHTML,
+            startdatum : document.getElementById("erfassungsdatum").innerHTML,
+            enddatum : document.getElementById("abholdatum").innerHTML
                     };
                     
 
@@ -52,19 +54,22 @@ window.onload = function(){
                 body:JSON.stringify({
                     name:post.name,
                     email: post.email,
-                    phone:post.tel,
+                    tel:post.tel,
                     priority:post.prio,
                     service:post.dienstleistung,
-                    mitteilung:post.dienstleistung})
+                    startdatum:post.startdatum,
+                    enddatum:post.enddatum
+                   })
 
             })
         .then((response)=>response.json())
             .then((json)=>finish(json))
             .catch((error)=>{
-                alert("Leider gab es einen Fehler, bitte versuchen Sie es noch einmal");
+                //alert("Leider gab es einen Fehler, bitte versuchen Sie es noch einmal");
                 return false;
             }
             );
+            return true;
             
             function finish(data)
         {
