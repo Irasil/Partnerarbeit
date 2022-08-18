@@ -9,7 +9,7 @@ window.onload = function hey(){
     }else{
         document.getElementById("dienstleistung").value = "Kleiner Service"
     }
-
+    const hello = 2;
     const name = document.getElementById('name');
     const vorname = document.getElementById('vorname');
     const email = document.getElementById('email');
