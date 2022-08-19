@@ -87,17 +87,14 @@
   margin-top: auto;
   margin-left: auto;
  margin-right: auto;
- padding: 20px;
- 
+ padding: 20px; 
  }
 
 .image{
   
-  
   width: 100%;
   height: auto;
-  padding: 12px;
-  
+  padding: 12px;  
 }
 
 .titel{

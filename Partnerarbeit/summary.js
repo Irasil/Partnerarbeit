@@ -14,8 +14,7 @@ window.onload = function(){
     var fullname = vorname+" "+name
 
 
-    document.getElementById("name").innerHTML = fullname;
-    
+    document.getElementById("name").innerHTML = fullname;    
     document.getElementById("email").innerHTML = email;
     document.getElementById("tel").innerHTML = tel;
     document.getElementById("prio").innerHTML = prio;

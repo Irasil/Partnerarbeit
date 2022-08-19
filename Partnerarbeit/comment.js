@@ -3,8 +3,10 @@ window.onload = function(){
     
 
 
-    document.getElementById("formkontakt").onsubmit = function () {
-      
+    document.getElementById("formkontakt").onsubmit = function (e) {
+        e.preventDefault()
+        
+        document.getElementById("mitteilung").innerHTML = `<input class="form-control" style="width:100%" value="Ihre Mitteilung wurde erfolgreich übermittelt."type="text">`
 
         const post = {
             email : document.getElementById("email1").value,            
@@ -31,13 +33,17 @@ window.onload = function(){
                     email: post.email,
                     priority: null,           
                     service:null,
-                    mitteilung:post.mitteilung
+                    create_date:post.mitteilung,
+                    startdatum:null,
+                    enddatum:null
                 })
  })
         .then((response)=>response.json())
             .then((json)=>finish(json))
-            .catch(()=>{
+            .catch((error)=>{
                 //alert("Leider gab es einen Fehler, bitte versuchen Sie es noch einmal");
+                document.getElementById("email1").value =    ""        
+                document.getElementById("mitteilung1").value = ""
                 return false;
             }
             );
@@ -46,6 +52,8 @@ window.onload = function(){
             function finish()
         {
             console.log("Hallo")
+            document.getElementById("email1").value =    ""        
+            document.getElementById("mitteilung1").value = ""
             return true;
         }
 

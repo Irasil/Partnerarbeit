@@ -5,11 +5,11 @@ window.onload = function hey(){
     const urlParams = new URLSearchParams(queryString);
     const dienstleistung = urlParams.get("dienstleistung")
     document.getElementById("dienstleistung").value = dienstleistung;
-    console.log("dienstleistung")
+    console.log(dienstleistung)
     }else{
         document.getElementById("dienstleistung").value = "Kleiner Service"
     }
-
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     const name = document.getElementById('name');
     const vorname = document.getElementById('vorname');
     const email = document.getElementById('email');
@@ -22,12 +22,36 @@ window.onload = function hey(){
     let feedbacks_label = ["name_feedback", "vorname_feedback", "email_feedback", "tel_feedback"]
     let feedbacktexte = ["Bitte geben Sie einen gültigen Namen ein.", "Bitte geben Sie einen gültigen Vornamen ein.", "Bitte geben Sie eine gültige Emailadresse an.", "Bitte geben Sie eine gültige Telefonnummer ein (nur Zahlen, keine Leerzeichen)"]
     
-    //Funktionen ---------------------------------------------------------
-    // Zählt days zu datum_before 
-    addDays = function (datum_before, days) {
-        enddatum.setDate(datum_before.getDate() + days);
-    }
 
+  
+    //Datum Anzeige je nach Prio es werden nur Arbeitstage gezählt
+   function countDays(noOfDaysToAdd) {
+    var startDate = new Date;
+    startDate = new Date
+    var endDate = "", count = 0;
+    while(count < noOfDaysToAdd){
+        endDate = new Date(startDate.setDate(startDate.getDate() + 1));
+        if(endDate.getDay() != 0 && endDate.getDay() != 6){
+        count++;
+        }    
+    }
+    enddatum = endDate;
+    return (endDate);
+}
+
+
+    //Anzeige der Abholdaten der jeweiligen Prio
+
+    let tief = countDays(12); 
+    let standart = countDays(7);
+    let express = countDays(5)
+    
+    document.getElementById("tief").innerHTML = tief.toLocaleDateString('de-DE', options)
+    document.getElementById("standart").innerHTML = standart.toLocaleDateString('de-DE', options)
+    document.getElementById("express").innerHTML = express.toLocaleDateString('de-DE', options)
+    
+    
+  
     // Überprüft ob die Feldern name, vorname, email und tel ausgefüllt sind. Wenn ja wird der Bestell-Button enabled
     checkAllFieldsFilled = function () {
         container = [name.value, vorname.value, email.value, tel.value, prio.value]
@@ -40,7 +64,7 @@ window.onload = function hey(){
 
     // Checkt ob Sonderzeichen vorhanden
     function containsNoSpecialChars(str) {
-        const specialChars = /[`1234 567890!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+        const specialChars = /[`1234567890 !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
         return !specialChars.test(str);
     }  
     
@@ -64,14 +88,15 @@ window.onload = function hey(){
             }
             
         }
-        if (prio.value == "Tief") {
-            addDays(startdatum, 12)          
-        } else if (prio.value == "Standart") {
-            addDays(startdatum, 7)       
-        } else {
-            addDays(startdatum, 5)     
+        if (prio.value == "Tief") {            
+            countDays(12)          
+        } else if (prio.value == "Standart") {           
+            countDays(7)       
+        } else {           
+            countDays(5)     
         }
-    // Berechnung des Abholdatums anhand von prio --------------------------------
+      
+    
 
        for (let i = 0; i < feedbacks.length; i = i + 1) {
             if (feedbacks[i] == false) {
@@ -88,8 +113,9 @@ window.onload = function hey(){
         }
 
         if (filter == 4) {
-            startdatum = startdatum.toDateString();
-            enddatum = enddatum.toDateString();
+            
+            startdatum = startdatum.toLocaleDateString('de-DE', options);
+            enddatum = enddatum.toLocaleDateString('de-DE', options);
             window.location = `bestaetigen.html?name=${name.value}&vorname=${vorname.value}&email=${email.value}&tel=${tel.value}&prio=${prio.value}&dienstleistung=${dienstleistung.value}&startdatum=${startdatum}&enddatum=${enddatum}`;
         }
     }
