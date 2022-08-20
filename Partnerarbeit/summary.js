@@ -1,6 +1,8 @@
 
 
 window.onload = function(){
+
+    //Die Parameter aus der URL werden in Variablen gespeichert
     var queryString = window.location.search
     const urlParams = new URLSearchParams(queryString);
     const name = urlParams.get("name")
@@ -13,7 +15,7 @@ window.onload = function(){
     const enddatum = urlParams.get("enddatum")
     var fullname = vorname+" "+name
 
-
+//Die Variablen werden in die jeweiligen Inputfelder übertragen
     document.getElementById("name").innerHTML = fullname;    
     document.getElementById("email").innerHTML = email;
     document.getElementById("tel").innerHTML = tel;
@@ -24,8 +26,7 @@ window.onload = function(){
    
 
 
-    document.getElementById("formid").onsubmit = function () {
-      
+    document.getElementById("formid").onsubmit = function () {     
 
         const post = {
             name : document.getElementById("name").innerHTML,
@@ -64,7 +65,7 @@ window.onload = function(){
         .then((response)=>response.json())
             .then((json)=>finish(json))
             .catch((error)=>{
-                //alert("Leider gab es einen Fehler, bitte versuchen Sie es noch einmal");
+                alert("Leider gab es einen Fehler, bitte versuchen Sie es noch einmal");
                 return false;
             }
             );

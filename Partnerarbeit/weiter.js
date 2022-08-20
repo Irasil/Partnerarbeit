@@ -1,3 +1,5 @@
+ //Damit wird der richtige Parameter für die Dienstleistung weitergegeben.
+ 
  function bestellen (knopf){
         
 

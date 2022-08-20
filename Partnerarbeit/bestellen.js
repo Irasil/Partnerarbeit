@@ -1,6 +1,7 @@
 window.onload = function hey(){
-    var queryString = window.location.search
 
+    //Schaut ob etws in der URL steht und wählt die entsprechende Dienstleistung aus
+    var queryString = window.location.search
     if(queryString != ""){
     const urlParams = new URLSearchParams(queryString);
     const dienstleistung = urlParams.get("dienstleistung")
@@ -9,6 +10,8 @@ window.onload = function hey(){
     }else{
         document.getElementById("dienstleistung").value = "Kleiner Service"
     }
+
+    
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     const name = document.getElementById('name');
     const vorname = document.getElementById('vorname');
@@ -41,7 +44,6 @@ window.onload = function hey(){
 
 
     //Anzeige der Abholdaten der jeweiligen Prio
-
     let tief = countDays(12); 
     let standart = countDays(7);
     let express = countDays(5)
@@ -88,6 +90,7 @@ window.onload = function hey(){
             }
             
         }
+    //Kontrolliert die Prio
         if (prio.value == "Tief") {            
             countDays(12)          
         } else if (prio.value == "Standart") {           
@@ -97,7 +100,7 @@ window.onload = function hey(){
         }
       
     
-
+    //Schickt Feedback und disablet denn Bestellbutton, wenn ein Feld nicht richtig Ausgefüllt wurde   
        for (let i = 0; i < feedbacks.length; i = i + 1) {
             if (feedbacks[i] == false) {
                 document.getElementById(feedbacks_label[i]).innerHTML = feedbacktexte[i]
@@ -112,22 +115,12 @@ window.onload = function hey(){
             filter = filter + feedbacks[i]
         }
 
+    //Die Daten werden erst weitergeleitet wenn alle Inputfelder richtig ausgefült wurden
         if (filter == 4) {
             
             startdatum = startdatum.toLocaleDateString('de-DE', options);
             enddatum = enddatum.toLocaleDateString('de-DE', options);
             window.location = `bestaetigen.html?name=${name.value}&vorname=${vorname.value}&email=${email.value}&tel=${tel.value}&prio=${prio.value}&dienstleistung=${dienstleistung.value}&startdatum=${startdatum}&enddatum=${enddatum}`;
         }
-    }
-
-
-    
+    }    
 }
-        
-
-
-    
-
-
-
- 
